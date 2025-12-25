@@ -1,0 +1,137 @@
+html {
+    font-size: clamp(14px, 1.6vw, 18px);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", Arial, sans-serif;
+    background: #f7f7f7;
+}
+
+.container {
+    position: relative;
+    container-type: inline-size;
+
+    width: min(96vw, 720px);
+    padding: clamp(24px, 5cqw, 40px);
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(20px, 4cqw, 32px);
+}
+
+.container>* {
+    transition-property: opacity, transform;
+    transition-duration: 500ms;
+    transition-timing-function: ease;
+}
+
+.container.is-done> :not(.message) {
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+.container.is-done .message {
+    position: absolute;
+    inset: 0;
+
+    display: grid;
+    place-items: center;
+
+    opacity: 1;
+    transform: translateY(0);
+
+    font-size: clamp(56px, 22cqw, 140px);
+    letter-spacing: 0.18em;
+}
+
+p {
+    margin: 0;
+    font-weight: 700;
+    white-space: nowrap;
+
+    font-size: clamp(18px, 6cqw, 32px);
+
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(16px, 6cqw, 36px);
+}
+
+.shape {
+    width: clamp(96px, 26cqw, 160px);
+    height: clamp(96px, 26cqw, 160px);
+    cursor: pointer;
+    user-select: none;
+
+    border-radius: 14px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .12);
+    transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.shape:active {
+    transform: scale(0.98);
+}
+
+.square {
+    background: #444;
+}
+
+.circle {
+    background: #2b7;
+    border-radius: 50%;
+    transition-property: border-radius;
+    transition-duration: 500ms;
+    transition-timing-function: ease;
+    transition-delay: 500ms;
+}
+
+.circle:hover {
+    border-radius: 0;
+    transition-delay: 0ms;
+}
+
+.circle.is-fixed {
+    border-radius: 0;
+    transition-delay: 0ms;
+}
+
+.shape:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, .16);
+}
+
+.message {
+    margin: 0;
+    min-height: 1.8em;
+    font-weight: 800;
+    font-size: clamp(18px, 6cqw, 32px);
+    color: red;
+    transition:
+        font-size 500ms ease,
+        transform 500ms ease,
+        letter-spacing 500ms ease;
+}
+
+.dot {
+    display: inline-block;
+    padding: 0 0.4em;
+    margin-left: 0.1em;
+    border-radius: 0.6em;
+    cursor: pointer;
+    font-weight: 900;
+}
